@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hrrecycleview.adapter.OnTravelClickListener
 import com.example.hrrecycleview.adapter.TravelAdapter
 import com.example.hrrecycleview.classave.Travel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /******************* Главная страница *******************/
 
@@ -49,6 +50,24 @@ class MainActivity : AppCompatActivity() {
         }
         val adapter = TravelAdapter(this, travel, travelClickListener)
         resView.adapter = adapter
+
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.item1 -> {
+                    Toast.makeText(applicationContext, "Hotel", Toast.LENGTH_LONG).show()
+                    true
+                }
+                R.id.item2 -> {
+                    Toast.makeText(applicationContext, "Cafe", Toast.LENGTH_LONG).show()
+                    true
+                }
+                R.id.item3 ->{
+                    Toast.makeText(applicationContext, "Bus and Taxi", Toast.LENGTH_LONG).show()
+                    true
+                }
+                else -> false
+            }
+        }
 
 
     }
