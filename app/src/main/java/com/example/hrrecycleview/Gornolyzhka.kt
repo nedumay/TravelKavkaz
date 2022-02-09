@@ -6,13 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hrrecycleview.adapter.GornolyzhAdapter
-import com.example.hrrecycleview.adapter.OnTravelClickListener
-import com.example.hrrecycleview.classave.Travel
-import android.webkit.WebView
-
-
-
-
+import com.example.hrrecycleview.adapter.OnRecClickListener
+import com.example.hrrecycleview.data.DataListSecondActivity
 
 
 /***************** Активити страницы Архыз *****************/
@@ -20,7 +15,7 @@ import android.webkit.WebView
 
 class Gornolyzhka : AppCompatActivity() {
 
-    val gornolyzhka: ArrayList<Travel> = ArrayList()
+    val gornolyzhka: ArrayList<DataListSecondActivity> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +23,8 @@ class Gornolyzhka : AppCompatActivity() {
 
         setInitialDate()
         val resView: RecyclerView = findViewById(R.id.listGorn)
-        val GornolyzhClickListener = object : OnTravelClickListener{
-            override fun onTravelClick(gornolyzh: Travel, position: Int) {
+        val GornolyzhClickListener = object : OnRecClickListener{
+            override fun onTravelClick(gornolyzh: DataListSecondActivity, position: Int) {
                 when(position){
                     0 -> Toast.makeText(applicationContext, "Общая информация/отдых в горах", Toast.LENGTH_SHORT).show()
                     1 -> Toast.makeText(applicationContext, "Инфраструктура Архыза", Toast.LENGTH_SHORT).show()
@@ -46,19 +41,19 @@ class Gornolyzhka : AppCompatActivity() {
 
     private fun setInitialDate() {
         gornolyzhka.add(
-            Travel( "Общая информация/отдых в горах", R.drawable.national_park)
+            DataListSecondActivity( "Общая информация/отдых в горах", R.drawable.national_park)
         )
         gornolyzhka.add(
-            Travel( "Инфраструктура Архыза", R.drawable.infrastruct)
+            DataListSecondActivity( "Инфраструктура Архыза", R.drawable.infrastruct)
         )
         gornolyzhka.add(
-            Travel( "Отели и жильё, где остановиться", R.drawable.hotel)
+            DataListSecondActivity( "Отели и жильё, где остановиться", R.drawable.hotel)
         )
         gornolyzhka.add(
-            Travel( "Покататься на лыжах/сноубордах/спуск на санках", R.drawable.skin_lyz)
+            DataListSecondActivity( "Покататься на лыжах/сноубордах/спуск на санках", R.drawable.skin_lyz)
         )
         gornolyzhka.add(
-            Travel( "Прогулка по достопримечательностям Архыза, что посмотреть", R.drawable.walk)
+            DataListSecondActivity( "Прогулка по достопримечательностям Архыза, что посмотреть", R.drawable.walk)
         )
 
     }

@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hrrecycleview.R
-import com.example.hrrecycleview.classave.Travel
+import com.example.hrrecycleview.data.DataListSecondActivity
 
 
-class GornolyzhAdapter internal constructor(context: Context, gornolyzh: List<Travel>, private val onClickListener: OnTravelClickListener):
+class GornolyzhAdapter internal constructor(context: Context, gornolyzh: List<DataListSecondActivity>, private val onClickListener: OnRecClickListener):
  RecyclerView.Adapter<GornolyzhAdapter.ViewHolder>(){
 
     class ViewHolder internal constructor(view: View): RecyclerView.ViewHolder(view){
@@ -22,7 +22,7 @@ class GornolyzhAdapter internal constructor(context: Context, gornolyzh: List<Tr
 
 
     private val inflaterGorn: LayoutInflater
-    private val gornolyzh: List<Travel>
+    private val gornolyzh: List<DataListSecondActivity>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +31,7 @@ class GornolyzhAdapter internal constructor(context: Context, gornolyzh: List<Tr
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pos: Travel = gornolyzh[position]
+        val pos: DataListSecondActivity = gornolyzh[position]
         holder.imageView.setImageResource(pos.imageId)
         holder.nameView.setText(pos.name)
 

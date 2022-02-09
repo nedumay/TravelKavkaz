@@ -8,13 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hrrecycleview.R
-import com.example.hrrecycleview.classave.Travel
+import com.example.hrrecycleview.data.DataListSecondActivity
 
-class WalkConyAdapter internal constructor(context: Context, walkcony: List<Travel>, private val onClickListener: OnTravelClickListener) :
+class WalkConyAdapter internal constructor(context: Context, walkcony: List<DataListSecondActivity>, private val onClickListener: OnRecClickListener) :
 RecyclerView.Adapter<WalkConyAdapter.ViewHolder>(){
 
     private val inflaterCony: LayoutInflater
-    private val walkcony: List<Travel>
+    private val walkcony: List<DataListSecondActivity>
 
     class ViewHolder internal constructor(view: View): RecyclerView.ViewHolder(view){
         val imageView: ImageView = view.findViewById(R.id.image)
@@ -27,7 +27,7 @@ RecyclerView.Adapter<WalkConyAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pos: Travel = walkcony[position]
+        val pos: DataListSecondActivity = walkcony[position]
         holder.imageView.setImageResource(pos.imageId)
         holder.nameView.setText(pos.name)
 

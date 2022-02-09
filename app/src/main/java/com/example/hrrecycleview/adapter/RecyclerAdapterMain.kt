@@ -9,14 +9,15 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import com.example.hrrecycleview.R
-import com.example.hrrecycleview.classave.Travel
+import com.example.hrrecycleview.data.DataListItem
+import com.example.hrrecycleview.data.DataListSecondActivity
 
-class TravelAdapter internal constructor(context: Context?, travel: List<Travel>, private val onClickListener: OnTravelClickListener) :
-    RecyclerView.Adapter<TravelAdapter.ViewHolder>() {
+class RecyclerAdapterMain internal constructor(context: Context?, dataListItem: List<DataListItem>, private val onClickListener: OnRecClickListenerMain) :
+    RecyclerView.Adapter<RecyclerAdapterMain.ViewHolder>() {
 
 
     private val inflater: LayoutInflater
-    private val travel: List<Travel>
+    private val dataListItem: List<DataListItem>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = inflater.inflate(R.layout.list_item, parent, false)
@@ -24,33 +25,37 @@ class TravelAdapter internal constructor(context: Context?, travel: List<Travel>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val person: Travel = travel[position]
-        holder.flagView.setImageResource(person.imageId)
+        val person: DataListItem = dataListItem[position]
         holder.nameView.setText(person.name)
+        holder.textView.setText(person.text)
+        holder.imgView.setImageResource(person.imageId)
 
         holder.itemView.setOnClickListener {
 
-            onClickListener.onTravelClick(person,position) }
+            onClickListener.onClick(person,position) }
 
     }
 
     override fun getItemCount(): Int {
-        return travel.size
+        return dataListItem.size
     }
 
     class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
-        val flagView: ImageView
         val nameView: TextView
+        val textView: TextView
+        val imgView: ImageView
+
 
         init {
-            flagView = view.findViewById(R.id.resFlag)
             nameView = view.findViewById(R.id.name)
+            textView = view.findViewById(R.id.text)
+            imgView = view.findViewById(R.id.img)
         }
     }
 
     init {
 
-        this.travel = travel
+        this.dataListItem = dataListItem
         inflater = LayoutInflater.from(context)
     }
 

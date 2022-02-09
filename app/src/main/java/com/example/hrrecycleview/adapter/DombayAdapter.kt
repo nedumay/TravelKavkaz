@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hrrecycleview.R
-import com.example.hrrecycleview.classave.Travel
+import com.example.hrrecycleview.data.DataListSecondActivity
 
-class DombayAdapter internal constructor(context: Context, dombay: List<Travel>, private val onClickListener: OnTravelClickListener):
+class DombayAdapter internal constructor(context: Context, dombay: List<DataListSecondActivity>, private val onClickListener: OnRecClickListener):
     RecyclerView.Adapter<DombayAdapter.ViewHolder>() {
 
     class ViewHolder internal constructor(view: View): RecyclerView.ViewHolder(view){
@@ -20,7 +20,7 @@ class DombayAdapter internal constructor(context: Context, dombay: List<Travel>,
     }
 
     private val inflaterDombay: LayoutInflater
-    private val dombay: List<Travel>
+    private val dombay: List<DataListSecondActivity>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = inflaterDombay.inflate(R.layout.list_item_gornolyz, parent,false)
@@ -28,7 +28,7 @@ class DombayAdapter internal constructor(context: Context, dombay: List<Travel>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val pos: Travel = dombay[position]
+        val pos: DataListSecondActivity = dombay[position]
         holder.imageView.setImageResource(pos.imageId)
         holder.nameView.setText(pos.name)
 
